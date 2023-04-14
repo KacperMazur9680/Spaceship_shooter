@@ -1,19 +1,23 @@
-import sys
+
 import pygame
+import sys
 from time import sleep
+
+from button import Button
+from bullet import Bullet
+from game_stats import Game_stats
+from scoreboard import Scoreboard
 from settings import Settings
 from spaceship import Spaceship
-from bullet import Bullet
 from target import Target
-from game_stats import Game_stats
-from button import Button
-from scoreboard import Scoreboard
+from username import get_user_name
 
 class Spaceship_shooter:
     def __init__(self):
 
         # Initializing everything needed
         pygame.init()
+        self.username = get_user_name()
         self.settings = Settings()
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height)) 
         self.stats = Game_stats(self)
@@ -24,7 +28,8 @@ class Spaceship_shooter:
         self._create_fleet()  # creating the fleet of targets
         self.play_button = Button(self, "Play")  # creating a button with a message
         self.target = Target(self)
-        pygame.display.set_caption("Spaceship Shooter")  # showing the name of the game at the top left corner
+        pygame.display.set_caption(f"{self.username} is playing Spaceship Shooter!")  # showing the name of the game at the top left corner
+        
 
     # Main loop responsible for running the game
     def run_game(self):
