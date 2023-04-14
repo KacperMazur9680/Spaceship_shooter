@@ -32,7 +32,7 @@ class Scoreboard:
     def prep_high_score(self):
 
         #storing the high score
-        with open("Spaceship_shooter/high_score.json") as f:
+        with open("high_score.json") as f:
             self.high_score_stored = json.load(f) 
 
         high_score_str = "{:,}".format(self.high_score_stored)
@@ -56,7 +56,7 @@ class Scoreboard:
             self.stats.high_score = self.stats.score
 
             # editing the stored high score
-            with open("Spaceship_shooter/high_score.json", "w") as f:
+            with open("high_score.json", "w") as f:
                 json.dump(self.stats.high_score, f)
             self.prep_high_score()
 

@@ -7,7 +7,7 @@ class Spaceship(Sprite):
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
-        self.image = pygame.image.load('Spaceship_shooter/images/spaceship.png')  # image of the spaceship
+        self.image = pygame.image.load('images/spaceship.png')  # image of the spaceship
         self.rect = self.image.get_rect()  # setting the image as a rectangle
         self.rect.midbottom = self.screen_rect.midbottom  # starting point of the spaceship (bottom center)
         self.x = float(self.rect.x)  # tracking the horizontal position of the spaceship
