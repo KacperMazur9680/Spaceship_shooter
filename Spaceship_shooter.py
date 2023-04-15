@@ -18,8 +18,8 @@ class Spaceship_shooter:
         # Initializing everything needed
         pygame.init()
         self.username = get_user_name()
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN) 
         self.settings = Settings()
-        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height)) 
         self.stats = Game_stats(self)
         self.sb = Scoreboard(self)
         self.spaceship = Spaceship(self)

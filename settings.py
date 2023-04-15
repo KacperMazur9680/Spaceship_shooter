@@ -1,10 +1,10 @@
+import pygame
+
 class Settings:
     def __init__(self):
         # Screen settings
-        self.screen_width = 1200
-        self.screen_height = 800
+        self.screen_width, self.screen_height = pygame.display.get_surface().get_size()
         self.bg_color = (230, 230, 230)
-
         self.spaceship_limit = 3  # number of lives
 
         # Bullet settings
