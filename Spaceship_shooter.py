@@ -28,7 +28,7 @@ class Spaceship_shooter:
         self._create_fleet()  # creating the fleet of targets
         self.play_button = Button(self, "Play")  # creating a button with a message
         self.target = Target(self)
-        pygame.display.set_caption(f"{self.username} is playing Spaceship Shooter!")  # showing the name of the game at the top left corner
+        # pygame.display.set_caption(f"{self.username} is playing Spaceship Shooter!")  # showing the name of the game at the top left corner
         
 
     # Main loop responsible for running the game
