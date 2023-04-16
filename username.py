@@ -11,11 +11,13 @@ pygame.display.set_caption("")
 
 manager = pygame_gui.UIManager((WIDTH, HEIGHT))
 
-text_input = pygame_gui.elements.UITextEntryLine(relative_rect=pygame.Rect((50, 75), (400, 50)), manager=manager,
+text_input = pygame_gui.elements.UITextEntryLine(relative_rect=pygame.Rect((50, 75), (400, 50)),
+                                                manager=manager,
                                                 object_id='#main_text_entry')
 
-label = pygame_gui.elements.UILabel(relative_rect=pygame.Rect((33, 40), (300, 50)), text='Please enter your username below:',
-                                                manager=manager)
+label_1 = pygame_gui.elements.UILabel(relative_rect=pygame.Rect((33, 40), (300, 50)), 
+                                        text='Please enter your username below:',
+                                        manager=manager)
 
 label_2 = pygame_gui.elements.UILabel(relative_rect=pygame.Rect((0, 110), (440, 50)), 
                                         text='The username cannot start with numbers nor',
@@ -49,7 +51,7 @@ def get_user_name():
                 if valid_user_name(username):
                     return username
                 else:
-                    label.kill()
+                    label_1.kill()
                     new_label = pygame_gui.elements.UILabel(relative_rect=pygame.Rect((5, 40), (450, 50)),
                                                             text='Invalid username, please choose another one:',
                                                             manager=manager)

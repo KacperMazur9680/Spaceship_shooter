@@ -2,14 +2,16 @@ import pygame.font
 from pygame.sprite import Group
 from lives import Lives
 import json
+import os
 
 class Scoreboard:
-    def __init__(self, ai_game):
+    def __init__(self, ai_game, username):
         self.ai_game = ai_game
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
         self.settings = ai_game.settings
         self.stats = ai_game.stats
+        self.username = username
 
         # Font settings
         self.text_color = (30, 30, 30)
@@ -31,9 +33,25 @@ class Scoreboard:
     # Making the high score a render image
     def prep_high_score(self):
 
-        #storing the high score
-        with open("high_score.json") as f:
-            self.high_score_stored = json.load(f) 
+        # Storing the high score
+        if not os.path.exists('high_scores_folder'):
+                os.makedirs('high_scores_folder')
+        
+        folder = 'high_scores_folder'
+        path = f'{self.username}_high_score.json'
+        
+        self.file_path = os.path.join(folder, path)
+        # check if file with said name exists
+        if os.path.exists(self.file_path):
+            pass
+        else:
+            # create a file
+            with open(self.file_path, 'w') as fp:
+                json.dump(0, fp)
+
+        # read users highest score
+        with open(self.file_path) as f:
+            self.high_score_stored = json.load(f)
 
         high_score_str = "{:,}".format(self.high_score_stored)
         self.high_score_image = self.font.render(high_score_str, True, self.text_color, self.settings.bg_color)
@@ -55,8 +73,8 @@ class Scoreboard:
         if self.stats.score > self.high_score_stored:
             self.stats.high_score = self.stats.score
 
-            # editing the stored high score
-            with open("high_score.json", "w") as f:
+            # Editing the stored high score
+            with open(self.file_path, "w") as f:
                 json.dump(self.stats.high_score, f)
             self.prep_high_score()
 

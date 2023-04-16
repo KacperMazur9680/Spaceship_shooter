@@ -17,16 +17,16 @@ class Spaceship_shooter:
 
         # Initializing everything needed
         pygame.init()
-        self.username = get_user_name()
+        username = get_user_name()
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN) 
         self.settings = Settings()
         self.stats = Game_stats(self)
-        self.sb = Scoreboard(self)
         self.spaceship = Spaceship(self)
+        self.sb = Scoreboard(self, username)
         self.bullets = pygame.sprite.Group()
         self.targets = pygame.sprite.Group()
         self._create_fleet()  # creating the fleet of targets
-        self.play_button = Button(self, "Play")  # creating a button with a message
+        self.play_button = Button(self, "PLAY")  # creating a button with a message
         self.target = Target(self)
         # pygame.display.set_caption(f"{self.username} is playing Spaceship Shooter!")  # showing the name of the game at the top left corner
         
