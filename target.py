@@ -8,7 +8,7 @@ class Target(Sprite):
         self.screen = ai_game.screen
         self.settings = ai_game.settings
 
-        self.image = pygame.image.load("images/silly.png")  # image of the target
+        self.image = pygame.image.load("images/Pixel_target.png")  # image of the target
         self.rect = self.image.get_rect()  # setting the image as a rectangle
 
         self.rect.x = self.rect.width  # space between targets equal to the width of one target
