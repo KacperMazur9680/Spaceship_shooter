@@ -25,7 +25,7 @@ class Spaceship_shooter:
         self.sb = Scoreboard(self, username)
         self.bullets = pygame.sprite.Group()
         self.targets = pygame.sprite.Group()
-        self._create_fleet()  # creating the fleet of targets
+        self._create_targets()  # creating the fleet of targets
         self.play_button = Button(self, "PLAY")  # creating a button with a message
         self.target = Target(self)
         # pygame.display.set_caption(f"{self.username} is playing Spaceship Shooter!")  # showing the name of the game at the top left corner
@@ -83,7 +83,7 @@ class Spaceship_shooter:
         self.targets.empty()  # emptying targets group
         self.bullets.empty()  # emptying sprites group
 
-        self._create_fleet()
+        self._create_targets()
         self.spaceship.center_spaceship()
 
         pygame.mouse.set_visible(False)
@@ -144,7 +144,7 @@ class Spaceship_shooter:
 
     def start_next_level(self):
         self.bullets.empty()  # emptying bullets group
-        self._create_fleet()  # creating a new fleet
+        self._create_targets()  # creating a new fleet
         self.settings.increase_speed() # incresing difficulty
 
         self.stats.level += 1
@@ -169,7 +169,7 @@ class Spaceship_shooter:
         self._check_target_bottom()
 
     # Math behind creating a fleet
-    def _create_fleet(self):
+    def _create_targets(self):
         target = Target(self)
         target_width, target_height = target.rect.size
         available_space_x = self.settings.screen_width - (2 * target_width)  # space between each target
@@ -215,7 +215,7 @@ class Spaceship_shooter:
                 self.targets.empty()  # emptying targets group
                 self.bullets.empty()  # emptying bullets grou
 
-                self._create_fleet()  # creasting a new fleet
+                self._create_targets()  # creasting a new fleet
 
                 self.spaceship.center_spaceship()  # reseting ships position
 
